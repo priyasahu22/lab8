@@ -1,0 +1,85 @@
+/* Write a program to merge 2 arrays (just one after another into another array), 
+find maximum of 2 arrays [maximum element of all the elements in both the arrays], 
+find minimum of 2 arrays */
+#include <iostream>
+
+using namespace std;
+
+int mergearr (int arr1[], int m, int arr2[], int n, int arr3[])
+{
+  int i, j, k,max,min;
+
+  j = k = 0;
+
+  for (; i < m + n;)
+    {
+      if (j < m && k < n)
+	{
+	  if (arr1[j] < arr2[k])
+	    {
+	      arr3[i] = arr1[j];
+	      j++;
+	    }
+	  else
+	    {
+	      arr3[i] = arr2[k];
+	      k++;
+	    }
+
+	  i++;
+	}
+      else if (j == m)
+	{
+	  for (;i < m + n; )
+	    {
+	      arr3[i] = arr2[k];
+
+	      k++;
+	      i++;
+	    }
+	}
+      else
+	{
+	  for (;i < m + n;)
+	    {
+	      arr3[i] = arr2[j];
+	      
+	      j++;
+	      i++;
+	}}    }
+	
+      cout << "the merged array is :" << endl;
+      for (int i = 0; i < m + n; i++)
+      { cout << arr3[i] << endl;}
+        
+    for(int i=1; i<m+n;i++)//condition to check the max of two arrays
+    { max=arr3[0];
+        if(arr3[i]>max)
+            max=arr1[i];
+    }
+    cout<<"the max of merged array is:"<<max<<endl;
+    
+    for(int i=1; i<m+n;i++)//condition to check the min of two arrays
+    { min=arr3[0];
+        if(arr3[i]<min)
+            min=arr1[i];
+    }
+    cout<<"the min of merged array is:"<<min<<endl;
+    
+    }
+  int main ()
+  {
+    int  m, n;
+    cout << "enter the size of array arr1 and arr2" << endl;
+    cin >> m >> n;
+    int arr1[m], arr2[n], arr3[m+n];
+    cout << "enter the elemnts of arr1" << endl;
+    for (int i = 1; i <= m; i++)
+      cin >> arr1[i];
+    cout << "enter the elemnts of arr2" << endl;
+    for (int i = 1; i <= n; i++)
+      cin >> arr2[i];
+    mergearr (arr1, m, arr2, n, arr3);
+    return 0;
+  }
+
